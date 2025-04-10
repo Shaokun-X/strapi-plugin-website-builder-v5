@@ -152,6 +152,7 @@ const LogsPage = () => {
                         <Typography textColor="neutral800">{log.createdAt}</Typography>
                       </Td>
                       <Td>
+                        {/* TODO fix delete */}
                         <Button onClick={() => handleLogDelete(log.id)}>Delete</Button>
                       </Td>
                     </Tr>
