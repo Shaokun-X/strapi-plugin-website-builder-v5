@@ -124,6 +124,7 @@ const BuildPage = () => {
                 {builds.map((build) => (
                   <Tr key={btoa(build.name)}>
                     <Td>
+                      {/* TODO fix the switch */}
                       <Switch
                         label="Build Enabled"
                         checked={build.enabled}
