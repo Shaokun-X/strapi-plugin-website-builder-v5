@@ -1,0 +1,18 @@
+{
+  "strapi-plugin-website-builder-v5.plugin.name": "Website Builder V5",
+  "strapi-plugin-website-builder-v5.table.header.actions": "Actions",
+  "strapi-plugin-website-builder-v5.builds.header.title": "Builds",
+  "strapi-plugin-website-builder-v5.builds.table.header.enabled": "Enabled",
+  "strapi-plugin-website-builder-v5.builds.table.header.trigger": "Trigger",
+  "strapi-plugin-website-builder-v5.builds.table.header.name": "Timestamp",
+  "strapi-plugin-website-builder-v5.builds.table.header.url": "URL",
+  "strapi-plugin-website-builder-v5.builds.empty": "No builds found",
+  "strapi-plugin-website-builder-v5.build.notification.trigger.success": "Build has been triggered successfully",
+  "strapi-plugin-website-builder-v5.logs.header.title": "Build Logs",
+  "strapi-plugin-website-builder-v5.logs.table.header.id": "ID",
+  "strapi-plugin-website-builder-v5.logs.table.header.trigger": "Trigger",
+  "strapi-plugin-website-builder-v5.logs.table.header.status": "Status",
+  "strapi-plugin-website-builder-v5.logs.table.header.timestamp": "Timestamp",
+  "strapi-plugin-website-builder-v5.logs.empty": "No logs found",
+  "strapi-plugin-website-builder-v5.log.notification.delete.success": "Build log deleted successfully"
+}
