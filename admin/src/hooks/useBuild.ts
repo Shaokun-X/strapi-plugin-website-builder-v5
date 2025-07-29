@@ -19,6 +19,7 @@ export const useBuild = () => {
       select: function ({ data }) {
         return data.data || false;
       },
+      refetchOnWindowFocus: false,
     });
   }
 
