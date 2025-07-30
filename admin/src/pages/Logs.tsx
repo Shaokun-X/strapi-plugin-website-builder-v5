@@ -88,7 +88,8 @@ const LogsPage = () => {
             </Box>
           ) : logs.length > 0 ? (
             <>
-              <Table colCount={5} rowCount={logs.length + 1}>
+              {/* add pagination */}
+              <Table colCount={7} rowCount={logs.length + 1}>
                 <Thead>
                   <Tr>
                     <Th>
@@ -118,8 +119,24 @@ const LogsPage = () => {
                     <Th>
                       <Typography variant="sigma" textColor="neutral600">
                         {formatMessage({
+                          id: getTranslation('logs.table.header.method'),
+                          defaultMessage: 'Method',
+                        })}
+                      </Typography>
+                    </Th>
+                    <Th>
+                      <Typography variant="sigma" textColor="neutral600">
+                        {formatMessage({
                           id: getTranslation('logs.table.header.status'),
                           defaultMessage: 'Status',
+                        })}
+                      </Typography>
+                    </Th>
+                    <Th>
+                      <Typography variant="sigma" textColor="neutral600">
+                        {formatMessage({
+                          id: getTranslation('logs.table.header.response'),
+                          defaultMessage: 'Response',
                         })}
                       </Typography>
                     </Th>
@@ -132,12 +149,12 @@ const LogsPage = () => {
                       </Typography>
                     </Th>
                     <Th>
-                      <VisuallyHidden>
+                      <Typography variant="sigma" textColor="neutral600">
                         {formatMessage({
                           id: getTranslation('table.header.actions'),
                           defaultMessage: 'Actions',
                         })}
-                      </VisuallyHidden>
+                      </Typography>
                     </Th>
                   </Tr>
                 </Thead>
@@ -149,10 +166,13 @@ const LogsPage = () => {
                         <Typography textColor="neutral800">{log.id}</Typography>
                       </Td>
                       <Td>
+                        <Typography textColor="neutral800">{log.build || 'unknown'}</Typography>
+                      </Td>
+                      <Td>
                         <Typography textColor="neutral800">{log.trigger}</Typography>
                       </Td>
                       <Td>
-                        <Typography textColor="neutral800">{log.build || 'unknown'}</Typography>
+                        <Typography textColor="neutral800">{log.method || ""}</Typography>
                       </Td>
                       <Td>
                         <Typography
@@ -163,11 +183,14 @@ const LogsPage = () => {
                         </Typography>
                       </Td>
                       <Td>
+                        <Typography textColor="neutral800">{log.response ? JSON.stringify(log.response) : ""}</Typography>
+                      </Td>
+                      <Td>
                         <Typography textColor="neutral800">{log.createdAt}</Typography>
                       </Td>
                       <Td>
                         {/* TODO fix delete */}
-                        <Button onClick={() => handleLogDelete(log.id)}>Delete</Button>
+                        <Button onClick={() => handleLogDelete(log.id)} endIcon={<Trash />}>Delete</Button>
                       </Td>
                     </Tr>
                   ))}

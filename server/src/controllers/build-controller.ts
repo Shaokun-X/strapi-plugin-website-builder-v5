@@ -1,5 +1,6 @@
 import type { Core } from '@strapi/strapi';
 import { getService } from '../utils';
+import { PLUGIN_ID } from '../constants';
 
 const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
   /**
@@ -9,6 +10,8 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
    */
   async trigger(ctx) {
     try {
+      // TODO use the config, maybe in build-service.ts
+      // const buildsConfig = strapi.plugin(PLUGIN_ID).config('builds');
       const { status } = await getService({ strapi, name: 'build' }).trigger({
         name: ctx.request.body.data.name,
         trigger: { type: 'manual' },
@@ -42,7 +45,7 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
           break;
 
         default:
-          ctx.send({ data: { status }, message: 'Unhandled status code' });
+          ctx.internalServerError({ data: { status }, message: 'An unexpected error occurred, please check the logs.' });
       }
     } catch (error) {
       ctx.internalServerError('An unexpected error occurred, please check the logs.');

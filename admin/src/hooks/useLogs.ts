@@ -27,6 +27,7 @@ export const useLogs = () => {
     });
   }
 
+  // TODO fix deletion
   const { mutateAsync: deleteLog } = useMutation({
     mutationFn: function (id) {
       return del(`/${PLUGIN_ID}/logs/${id}`);

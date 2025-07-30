@@ -11,7 +11,9 @@
   "strapi-plugin-website-builder-v5.logs.header.title": "Build Logs",
   "strapi-plugin-website-builder-v5.logs.table.header.id": "ID",
   "strapi-plugin-website-builder-v5.logs.table.header.trigger": "Trigger",
+  "strapi-plugin-website-builder-v5.logs.table.header.method": "Method",
   "strapi-plugin-website-builder-v5.logs.table.header.status": "Status",
+  "strapi-plugin-website-builder-v5.logs.table.header.response": "Response",
   "strapi-plugin-website-builder-v5.logs.table.header.timestamp": "Timestamp",
   "strapi-plugin-website-builder-v5.logs.empty": "No logs found",
   "strapi-plugin-website-builder-v5.log.notification.delete.success": "Build log deleted successfully"
