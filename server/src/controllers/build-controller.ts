@@ -45,7 +45,10 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
           break;
 
         default:
-          ctx.internalServerError({ data: { status }, message: 'An unexpected error occurred, please check the logs.' });
+          ctx.internalServerError({
+            data: { status },
+            message: 'An unexpected error occurred, please check the logs.',
+          });
       }
     } catch (error) {
       ctx.internalServerError('An unexpected error occurred, please check the logs.');

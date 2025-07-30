@@ -10,7 +10,7 @@ export const useBuild = () => {
   const { post, get } = useFetchClient();
   const { toggleNotification } = useNotification();
   const { formatMessage } = useIntl();
-  const [ isTriggering, setIsTriggering ] = useState(false);
+  const [isTriggering, setIsTriggering] = useState(false);
 
   function getBuilds() {
     return useQuery({

@@ -125,10 +125,7 @@ const BuildPage = () => {
                 {builds.map((build) => (
                   <Tr key={btoa(build.name)}>
                     <Td>
-                      <Checkbox
-                        disabled={true}
-                        checked={build.enabled}
-                      />
+                      <Checkbox disabled={true} checked={build.enabled} />
                     </Td>
                     <Td>
                       <Typography textColor="neutral800">{build.trigger.type}</Typography>
@@ -151,7 +148,7 @@ const BuildPage = () => {
                             endIcon={<Play />}
                             onClick={() => handleTriggerBuild(build.name)}
                           >
-                            {isTriggering ? "Running..." : "Trigger"}
+                            {isTriggering ? 'Running...' : 'Trigger'}
                           </Button>
                         )}
                       </Flex>

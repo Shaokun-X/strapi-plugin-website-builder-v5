@@ -172,7 +172,7 @@ const LogsPage = () => {
                         <Typography textColor="neutral800">{log.trigger}</Typography>
                       </Td>
                       <Td>
-                        <Typography textColor="neutral800">{log.method || ""}</Typography>
+                        <Typography textColor="neutral800">{log.method || ''}</Typography>
                       </Td>
                       <Td>
                         <Typography
@@ -183,14 +183,18 @@ const LogsPage = () => {
                         </Typography>
                       </Td>
                       <Td>
-                        <Typography textColor="neutral800">{log.response ? JSON.stringify(log.response) : ""}</Typography>
+                        <Typography textColor="neutral800">
+                          {log.response ? JSON.stringify(log.response) : ''}
+                        </Typography>
                       </Td>
                       <Td>
                         <Typography textColor="neutral800">{log.createdAt}</Typography>
                       </Td>
                       <Td>
                         {/* TODO fix delete */}
-                        <Button onClick={() => handleLogDelete(log.id)} endIcon={<Trash />}>Delete</Button>
+                        <Button onClick={() => handleLogDelete(log.id)} endIcon={<Trash />}>
+                          Delete
+                        </Button>
                       </Td>
                     </Tr>
                   ))}

@@ -2,7 +2,6 @@
 
 V5 Port of https://market.strapi.io/plugins/strapi-plugin-website-builder
 
-
 ## Config example
 
 ```ts

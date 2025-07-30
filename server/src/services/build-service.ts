@@ -3,7 +3,7 @@ import { getService } from '../utils';
 
 export default ({ strapi }: { strapi: Core.Strapi }) => ({
   async trigger({ name, record, trigger }) {
-    const log = { trigger: trigger.type, status: 500, build: name, response: null, method: "POST" };
+    const log = { trigger: trigger.type, status: 500, build: name, response: null, method: 'POST' };
 
     try {
       const request = await getService({ strapi, name: 'request' }).build({
@@ -17,7 +17,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     } catch (error) {
       if (error.response) {
         log.status = error.response.status;
-        log.response = error.response.data
+        log.response = error.response.data;
       } else if (error.request) {
         log.response = {};
       } else {
