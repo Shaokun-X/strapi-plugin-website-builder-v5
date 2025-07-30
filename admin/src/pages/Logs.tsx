@@ -6,6 +6,7 @@
 // @ts-nocheck
 import { memo, useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
 import {
   Main,
   Box,
@@ -15,13 +16,15 @@ import {
   Tr,
   Tbody,
   Td,
+  LinkButton,
   EmptyStateLayout,
   Typography,
   VisuallyHidden,
   Button,
 } from '@strapi/design-system';
-import { FileError, Trash } from '@strapi/icons';
+import { FileError, Trash, BulletList } from '@strapi/icons';
 import { Page, Layouts } from '@strapi/strapi/admin';
+import { PLUGIN_ID } from '../pluginId';
 import { useLogs } from '../hooks/useLogs';
 import { getTranslation } from '../utils/getTranslation';
 
@@ -66,6 +69,17 @@ const LogsPage = () => {
             id: getTranslation('logs.header.title'),
             defaultMessage: 'Build Logs',
           })}
+          primaryAction={
+            <LinkButton
+              tag={Link}
+              variant="secondary"
+              size="s"
+              endIcon={<BulletList />}
+              to={`/plugins/${PLUGIN_ID}`}
+            >
+              Builds
+            </LinkButton>
+          }
         />
         <Layouts.Content>
           {isLoading ? (
@@ -110,7 +124,7 @@ const LogsPage = () => {
                       </Typography>
                     </Th>
                     <Th>
-                      <Typography variant="sigma" fontWeight="semiBold" textColor="neutral600">
+                      <Typography variant="sigma" textColor="neutral600">
                         {formatMessage({
                           id: getTranslation('logs.table.header.timestamp'),
                           defaultMessage: 'Timestamp',

@@ -21,8 +21,9 @@ export const useLogs = () => {
         });
       },
       select: function ({ data }) {
-        return { ...data } || false;
+        return data ? { ...data } : false;
       },
+      refetchOnWindowFocus: false,
     });
   }
 

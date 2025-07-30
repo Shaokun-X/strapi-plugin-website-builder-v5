@@ -5,6 +5,7 @@
  */
 import { memo, useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
 import {
   Main,
   Box,
@@ -21,7 +22,7 @@ import {
   Button,
   Flex,
 } from '@strapi/design-system';
-import { FileError, Stack, Play } from '@strapi/icons';
+import { FileError, Clock, Play } from '@strapi/icons';
 import { PLUGIN_ID } from '../pluginId';
 import { Page, Layouts } from '@strapi/strapi/admin';
 import { useBuild } from '../hooks/useBuild';
@@ -60,12 +61,12 @@ const BuildPage = () => {
             defaultMessage: 'Builds',
           })}
           primaryAction={
-            // TODO in app nav
             <LinkButton
+              tag={Link}
               variant="secondary"
               size="s"
-              endIcon={<Stack />}
-              href={`/admin/plugins/${PLUGIN_ID}/logs`}
+              endIcon={<Clock />}
+              to={`/plugins/${PLUGIN_ID}/logs`}
             >
               Logs
             </LinkButton>
