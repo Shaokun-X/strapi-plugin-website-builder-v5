@@ -4,11 +4,13 @@ import { useFetchClient, useNotification } from '@strapi/strapi/admin';
 import { PLUGIN_ID } from '../pluginId';
 import { getTranslation } from '../utils/getTranslation';
 import { useIntl } from 'react-intl';
+import { useState } from 'react';
 
 export const useBuild = () => {
   const { post, get } = useFetchClient();
   const { toggleNotification } = useNotification();
   const { formatMessage } = useIntl();
+  const [ isTriggering, setIsTriggering ] = useState(false);
 
   function getBuilds() {
     return useQuery({
@@ -25,8 +27,9 @@ export const useBuild = () => {
 
   const { mutateAsync: triggerBuild } = useMutation({
     // TODO fix type
-    mutationFn: function (data: any) {
-      return post(`/${PLUGIN_ID}/builds`, { data });
+    mutationFn: async function (data: any) {
+      setIsTriggering(true);
+      return await post(`/${PLUGIN_ID}/builds`, { data });
     },
     onSuccess: () => {
       toggleNotification({
@@ -36,17 +39,21 @@ export const useBuild = () => {
     },
     onError: (error: any) => {
       toggleNotification({
-        type: 'warning',
+        type: 'danger',
         message:
           error.response?.error?.message ||
           error.message ||
           formatMessage({ id: 'notification.error' }),
       });
     },
+    onSettled: () => {
+      setIsTriggering(false);
+    },
   });
 
   return {
     triggerBuild,
+    isTriggering,
     getBuilds,
   };
 };

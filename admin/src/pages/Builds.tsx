@@ -16,7 +16,7 @@ import {
   Td,
   EmptyStateLayout,
   Typography,
-  Switch,
+  Checkbox,
   LinkButton,
   Button,
   Flex,
@@ -32,7 +32,7 @@ const BuildPage = () => {
   // TODO fix type
   const [builds, setBuilds] = useState<any[]>([]);
   const { formatMessage } = useIntl();
-  const { triggerBuild, getBuilds } = useBuild();
+  const { triggerBuild, isTriggering, getBuilds } = useBuild();
 
   const { isLoading: isLoadingBuilds, data, isRefetching: isRefetchingBuilds } = getBuilds();
 
@@ -97,7 +97,7 @@ const BuildPage = () => {
                     </Typography>
                   </Th>
                   <Th width="20%">
-                    <Typography variant="sigma" fontWeight="semiBold" textColor="neutral600">
+                    <Typography variant="sigma" textColor="neutral600">
                       {formatMessage({
                         id: getTranslation('builds.table.header.name'),
                         defaultMessage: 'Name',
@@ -124,11 +124,9 @@ const BuildPage = () => {
                 {builds.map((build) => (
                   <Tr key={btoa(build.name)}>
                     <Td>
-                      {/* TODO fix the switch */}
-                      <Switch
-                        label="Build Enabled"
+                      <Checkbox
+                        disabled={true}
                         checked={build.enabled}
-                        onCheckedChange={(checked: boolean) => (build.enabled = checked)}
                       />
                     </Td>
                     <Td>
@@ -148,11 +146,11 @@ const BuildPage = () => {
                           <Button
                             variant="default"
                             size="S"
-                            disabled={build.enabled === false}
+                            disabled={!build.enabled || isTriggering}
                             endIcon={<Play />}
                             onClick={() => handleTriggerBuild(build.name)}
                           >
-                            Trigger
+                            {isTriggering ? "Running..." : "Trigger"}
                           </Button>
                         )}
                       </Flex>
