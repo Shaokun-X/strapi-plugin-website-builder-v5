@@ -4,7 +4,7 @@ V5 Port of https://market.strapi.io/plugins/strapi-plugin-website-builder
 
 A plugin for Strapi that provides the ability to trigger website builds manually, periodically or through model events.
 
-![NPM Version](https://img.shields.io/npm/v/strapi-plugin-website-builder-v5) ![NPM License](https://img.shields.io/npm/l/strapi-plugin-website-builder-v5)
+[![NPM Version](https://img.shields.io/npm/v/strapi-plugin-website-builder-v5)](https://www.npmjs.com/package/strapi-plugin-website-builder-v5) [![NPM License](https://img.shields.io/npm/l/strapi-plugin-website-builder-v5)](https://github.com/Shaokun-X/strapi-plugin-website-builder-v5/blob/master/LICENSE)
 
 
 ## Features
